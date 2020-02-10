@@ -1,0 +1,228 @@
+/* Animation */
+@keyframes rolling {
+    0% {
+        transform: translateY(0%);
+    }
+    25% {
+        transform: translateY(-20%);
+    }
+    50% {
+        transform: translateY(-40%);
+    }
+    75% {
+        transform: translateY(-60%);
+    }
+    100% {
+        transform: translateY(-80%);
+    }
+}
+
+/* CSS Reset */
+body, h1, h2, h3, p, ul, dl, dd, h4, li{
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+h1, h2 {
+    font-size: 100%;
+    font-weight: normal;
+}
+h4 {
+    color: white;
+    padding: 0.7em;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body{
+    background-color: #111;
+    color: #999;
+}
+
+.portrait {
+    background-image: url(images/profile.png);
+    background-size: cover;
+    background-position: center;
+    padding-top: 56.25%;
+
+}
+/* Padding-top set height by width -> Responsive design */
+/* 16:9 ratio as percent -> 9/16 = 56.25% */
+/* Remove Basic browser Setting*/
+.profile {
+    padding: 7%;
+}
+.profile-header,
+.profile-section {
+    padding-bottom: 14%;
+}
+
+.profile-section h2 {
+    border-top: 3px solid;
+    color: orangered;
+    margin-bottom: 20px;
+    padding: 0.5em 0;
+    position: sticky;
+    top: 0;
+    background-color: #111;
+    box-shadow: 0 0 50px 10px #111;
+    font-size: 1.5em;
+    font-family: 'PT Sans', sans-serif;
+}
+
+
+.name {
+    font-size: 30px;
+    line-height: 2;
+    font-style: italic;
+    margin-bottom: 20px;
+    font-family: 'Bowlby One SC', cursive;
+    margin-bottom: 40px;
+    position: sticky;
+    top: -1.8em;
+    background-color: #111;
+    box-shadow: 0 0 50px 10px #111;
+}
+.name-desc {
+    font-family: 'Nova Round', cursive;
+    color: white;
+}
+/* 1 line-height will be 30px <- from font-size*/
+.name-job {
+    display: inline-block;
+    color:white;
+    vertical-align: top;
+    height: 2em;
+    overflow: hidden;
+    padding-right: 0.5em;
+    position: relative;
+}
+.name-job::after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin-left: -1em;
+    box-shadow: inset 0 12px 10px #111;
+}
+.name-job-list {
+    animation-name: rolling;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+}
+
+.name-title {
+    font-size: 2em;
+    line-height: 0.8;
+    color: deeppink;
+    margin-left: -0.2em;
+    position: relative;
+}
+.icons {
+    margin: 30px 0;
+}
+.icons a {
+    background-image: url(images/icons.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-indent: -9999px;
+}
+/* search image-replacement methods, text-indent is old method */
+
+.icons a.twitter    {background-position: left top;}
+.icons a.facebook   {background-position: center top;}
+.icons a.pinterest  {background-position: right top;}
+.icons a:hover      {background-position-y: bottom;}
+
+
+.timeline {
+    font-size: 0.9rem;
+    color: #666;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.timeline li {
+    padding-bottom: 30px;
+}
+
+.timeline li:last-child {
+    padding-bottom: 0;
+}
+
+.timeline li h3 {
+    color: orange;
+    float: left;
+    font-size: 1rem;
+    padding-top: 0.1em;
+    margin-top: 0.3em;
+    margin-right: 0.5em;
+    border-top: 2px solid;
+}
+
+.graph li {
+    background: rgb(161,34,179);
+    background: linear-gradient(90deg, rgba(161,34,179,1) 26%, rgba(0,212,255,1) 96%);
+    color: white;
+    padding: 0.5em 1em;
+    margin: 0.4em 0;
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-family: 'Arimo', sans-serif;
+}
+/* Use css gradient */
+.graph li::before {
+    /* content: attr(data-score);  In case we need this for Maintenance */
+    float: right;
+}
+
+.graph li[data-score="100%"] {width: 90%}
+
+.contact dt {
+    color: orange;
+    float: left;
+    width: 4em;
+    font-family: 'Arimo', sans-serif;
+}
+.contact dd {
+    font-family: 'Arimo', sans-serif;
+}
+/* if viewport is more than 768px */
+@media ( min-width: 768px ) {
+    .portrait {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 60vw;
+        height: 100vh;
+        padding: 0;
+    }
+    .profile {
+        margin-left: 60vw;
+    }
+    .name {
+        font-size: 2.5vw;
+    }
+    .timeline {
+        margin: 0 -10px;
+    }
+    .timeline li {
+        width: 50%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    .timeline li:nth-child(even) { 
+        margin-left: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
